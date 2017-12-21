@@ -1,7 +1,7 @@
 // import _ from 'lodash';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchStandUp} from '../actions';
+import {fetchStandUp} from '../actions/fetch_standup';
 import { Link } from 'react-router-dom';
 
 class StandUpIndex extends Component {
