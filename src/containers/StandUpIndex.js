@@ -2,12 +2,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchStandUp} from '../actions';
+import { Link } from 'react-router-dom';
 
 class StandUpIndex extends Component {
-    componentWillMount(){
+    componentDidMount(){
          this.props.fetchStandUp();
     }
-    
+
     renderStandup(){   
          return (this.props.standups.map((list) => {
             return (
@@ -28,6 +29,7 @@ class StandUpIndex extends Component {
         
         return (
             <div>
+                <div><Link to="/standups/new">Add Standup</Link></div>
                 <h3>StandUps</h3>
                 {typeof(this.props.standups) === 'undefined' ?
                 <p>Loading</p> : <div>{this.renderStandup()}</div>}

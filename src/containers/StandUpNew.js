@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+const inputStyle ={
+    width: '70%',
+    height: '20%',
+    padding: '10px',
+    marginTop: '10px',
+    marginBottom: '10px'
+}
 
 export default class StandUpNew extends Component {
-    componentWillReciveProps(nextProps){
-        debugger;
-        console.log('component will recive props');        
-    }
     render() {
         return (
-            <div>this is new</div>
+            <div>
+                <div><Link to="/standups">Standups</Link></div>
+                <input style= {inputStyle} type= "text" placeholder= "What did you work on yesterday?"/><br />
+                <input style= {inputStyle} type= "text" placeholder= "What are you planning to work on today?"/><br />
+                <input style= {inputStyle} type= "text" placeholder= "Any impediments in your way?"/><br />
+                <button>Submit</button>
+                <button>Cancel</button>
+            </div>            
         );
     }
 }
