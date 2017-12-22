@@ -10,13 +10,6 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import '../styles/index.css';
 
-const h3Style = {
-  textAlign: 'center',
-  padding: '10px',
-  marginBottom: '10px',
-  backgroundColor: '#ECEFF1'
-}
-
 const divStyle = {
   padding: '10px',
 }
@@ -57,8 +50,8 @@ class StandUpIndex extends Component {
     return (
       <div>
         <Paper>
-          <Typography type='headline'>
-            <h3 style={h3Style}>StandUps</h3>
+          <Typography>
+            <h1 className='h3Style'>StandUps</h1>
           </Typography>
         </Paper>
 

@@ -1,3 +1,18 @@
+/* CSS for all headers */
+.h3Style {
+  text-align: center;
+  margin: -10px;
+  padding: 25px;
+  margin-bottom: 10px;
+  background-color: #00BFA5;
+  color: white;
+}
+
+/* CSS for sidebar */
+.link {
+  text-decoration: none;
+}
+
 /* CSS for StandUpIndex */
 .listing {
   padding: 5px;
@@ -8,6 +23,25 @@
 /* CSS for StandUpNew */
 .form {
   padding: 50px;
+  margin-bottom: 20px;
   padding-left: 10px;
   color: red;
+}
+
+.button {
+  float: right;
+
+}
+
+.button Button {
+  background-color: white;
+  color: #00BFA5;
+  border: 2px solid #00BFA5;
+  padding: 10px 50px;
+  margin: 15px;
+}
+
+.button Button:hover {
+  background-color: #00BFA5;
+  color: white;
 }

@@ -5,25 +5,13 @@ import {UpdateStandup} from '../actions/add_standup';
 import Sidebar from '../components/sidebar';
 import '../styles/index.css';
 
-// import PropTypes from 'prop-types';
-// import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
+// import Input, { InputLabel } from 'material-ui/Input';
+// import { FormControl, FormHelperText } from 'material-ui/Form';
+import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
-
-const h3Style = {
-  textAlign: 'center',
-  padding: '10px',
-  marginBottom: '10px',
-  backgroundColor: '#ECEFF1'
-}
-
-const paperStyle ={
-  color: 'red'
-}
 
 class StandUpNew extends Component {
   constructor(props){
@@ -40,22 +28,28 @@ class StandUpNew extends Component {
   }
 
   handleSubmit = (event)=> {
-    this.props.dispatch(UpdateStandup(this.state.standups))
     event.preventDefault();
+    this.props.dispatch(UpdateStandup(this.state.standups))
   }
 
   handleChange = (event) => {
+    const  {name, value} = event.target;
+    const {standups} = this.state;
     this.setState({
-      standups: event.target.value
-    })
+      standups: {
+        ...standups,
+        [name]: value
+      }
+    });
   }
 
   render() {
+    const {standups} = this.state
     return (
       <div>
         <Paper>
-          <Typography type='headline'>
-            <h3 style={h3Style}>Create new Standup</h3>
+          <Typography>
+            <h1 className='h3Style'>Create new Standup</h1>
           </Typography>
         </Paper>
 
@@ -66,30 +60,49 @@ class StandUpNew extends Component {
 
           <Grid item xs={18} sm={9}>
             <Paper className='form'>
-              <FormControl fullWidth onSubmit={this.handleSubmit}>
-                <InputLabel>What did you work on yesterday?</InputLabel>
-                <Input value={this.state.standups.day} onChange={this.handleChange} />
-              </FormControl>
+              <TextField fullWidth
+                          label="Uncontrolled"
+                defaultValue="foo"
+                margin="normal"
+              />
+              {/* <FormControl fullWidth>
+                <InputLabel htmlFor='custom-color-input'>What did you work on yesterday?</InputLabel>
+                <Input name="work_done" value={standups.work_done} onChange={this.handleChange} />
+              </FormControl> */}
             </Paper>
 
-            <Paper>
+            {/* <Paper className='form'>
               <FormControl fullWidth>
                 <InputLabel>What are you planning to work on today?</InputLabel>
-                <Input value={this.state.standups.work_done} onChange={this.handleChange} />
+                <Input name="work_planned" value={standups.work_planned} onChange={this.handleChange} />
               </FormControl>
             </Paper>
 
-            <Paper>
+            <Paper className='form'>
               <FormControl fullWidth>
                 <InputLabel>Any impediments in your way?</InputLabel>
-                <Input value={this.state.standups.work_planned} onChange={this.handleChange} />
+                <Input name="blocker" value={standups.blocker} onChange={this.handleChange} />
               </FormControl>
             </Paper>
 
-            <Paper>
-              <Button raised color='contrast'>Submit</Button>
+            <div className='button'>
+              <Button onSubmit={this.handleSubmit} raised color='contrast'>Submit</Button>
               <Button raised color='contrast'>Cancel</Button>
+            </div> */}
+
+            {/* <Paper className='form'>
+              <FormControl fullWidth>
+                <InputLabel>User Id</InputLabel>
+                <Input name= "user_id" value={standups.user_id} onChange={this.handleChange} />
+              </FormControl>
             </Paper>
+
+            <Paper className='form'>
+              <FormControl fullWidth>
+                <InputLabel>Day</InputLabel>
+                <Input name= "day" value={standups.day} onChange={this.handleChange} />
+              </FormControl>
+            </Paper> */}
           </Grid>
         </Grid>
       </div>

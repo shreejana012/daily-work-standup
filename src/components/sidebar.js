@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import { MenuItem, MenuList } from 'material-ui/Menu';
-import Paper from 'material-ui/Paper';
+import '../styles/index.css';
 import { Link } from 'react-router-dom';
-
-const divStyle = {
-  // marginTop: '5px',
-};
+import List, { ListItem, ListItemText } from 'material-ui/List';
+import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
 
 class Sidebar extends Component {
   render() {
     return (
-      <div style={divStyle}>
+      <div className='sidebar'>
         <Paper>
-          <MenuList>
-            <MenuItem>
-              <Link to="/standups">Index</Link></MenuItem>
-            <MenuItem>
-              <Link to="/standups/new">Create</Link></MenuItem>
-            <MenuItem>
-              <Link to="/standups/show">Show</Link></MenuItem>
-          </MenuList>
+          <List>
+            <ListItem button>
+              <Link className='link' to="/standups"><ListItemText primary="Index" /></Link>
+            </ListItem><Divider />
+            <ListItem button>
+              <Link className='link' to="/standups/new"><ListItemText primary="New" /></Link>
+            </ListItem><Divider />
+            <ListItem button>
+              <Link className='link' to="/standups/show"><ListItemText primary="Show" /></Link></ListItem>
+          </List>
         </Paper>
       </div>
     );

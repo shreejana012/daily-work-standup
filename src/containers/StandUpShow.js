@@ -6,20 +6,13 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
-const h3Style = {
-  textAlign: 'center',
-  padding: '10px',
-  marginBottom: '10px',
-  backgroundColor: '#ECEFF1'
-}
-
 export default class StandUpShow extends Component {
   render() {
     return (
       <div>
         <Paper>
-          <Typography type='headline'>
-            <h3 style={h3Style}>StandUps of User</h3>
+          <Typography>
+            <h1 className='h3Style'>StandUps of User</h1>
           </Typography>
         </Paper>
 
