@@ -15,7 +15,7 @@ class StandUpNew extends Component {
         super(props);
         this.state = {
           standups: {
-            user_id: '',
+            // user_id: '',
             day: '',
             work_done: '',
             work_planned: '',
@@ -24,24 +24,32 @@ class StandUpNew extends Component {
         };
       }
     handleSubmit = (event)=> {
+        debugger;
+        event.preventDefault();        
         this.props.dispatch(UpdateStandup(this.state.standups))
-        event.preventDefault();
     }
     handleChange = (event) => {
-        this.setState({
-            standups: event.target.value
-        })
+            const  {name, value} = event.target;
+            const {standups} = this.state;
+            this.setState({
+              standups: {
+                ...standups,
+                [name]: value
+              }
+            });
     }
     render() {
+        const {standups} = this.state
         return (
             <div>
                 <div><Link to="/standups">Standups</Link></div>
                 <form onSubmit={this.handleSubmit}>
-                    <input style= {inputStyle} value={this.state.standups.day} onChange= {this.handleChange} type= "text" placeholder= "What did you work on yesterday?"/><br />
-                    <input style= {inputStyle} value={this.state.standups.work_done} onChange= {this.handleChange} type= "text" placeholder= "What are you planning to work on today?"/><br />
-                    <input style= {inputStyle} value={this.state.standups.work_planned} onChange= {this.handleChange} type= "text" placeholder= "Any impediments in your way?"/><br />
+                    <input style= {inputStyle} name= "user_id" value = {standups.user_id} onChange= {this.handleChange} type= "text" placeholder= "user_id"/><br />
+                    <input style= {inputStyle} name= "day" value = {standups.day} onChange= {this.handleChange} type= "text" placeholder= "Day"/><br />
+                    <input style= {inputStyle} name= "work_done" value = {standups.work_done} onChange= {this.handleChange} type= "text" placeholder= "What did you work on yesterday?"/><br />
+                    <input style= {inputStyle} name= "work_planned" value = {standups.work_planned} onChange= {this.handleChange} type= "text" placeholder= "What are you planning to work on today?"/><br />
+                    <input style= {inputStyle} name= "blocker" value = {standups.blocker} onChange= {this.handleChange} type= "text" placeholder= "Any impediments in your way?"/><br />
                     <button type="submit">Submit</button>
-                    <button>Cancel</button>
                 </form>
             </div>            
         );

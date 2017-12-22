@@ -1,8 +1,19 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:5000/api/v1';
-const API_KEY = '?key=STANDUPNEW1234';
-export function UpdateStandup() {
-    const request = axios.post(`${ROOT_URL}/standups${API_KEY}`, { headers: { 'client': 'foz7HZ8nBpNz_z4lYPTaGA ','expiry': '1515059539','token-type': 'Bearer', 'access-token': 'MY4PUjsoWAt4np51IxNU8g','uid': 'manager2@gmail.com' } });    
+const API_KEY = '?key=STANDUPS1234';
+export function UpdateStandup(standups) {
+    const request = axios({
+         headers: { 
+            'client': 'hG39rKDQsgSV1fkKCVGCdA',
+            'expiry': '1514959841',
+            'token-type': 'Bearer',
+            'access-token': '6avqSYNNQotewfeAzTqeBg',
+            'uid': 'manager2@gmail.com' 
+         },
+        method: 'POST',
+        url: `${ROOT_URL}/standups${API_KEY}`,
+        data: standups
+    });    
     return {
         type: 'ADDED_STANDUP',
         payload: request
