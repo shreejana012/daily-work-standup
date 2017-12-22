@@ -1,0 +1,13 @@
+/* CSS for StandUpIndex */
+.listing {
+  padding: 5px;
+  padding-left: 10px;
+  color: #37474F;
+}
+
+/* CSS for StandUpNew */
+.form {
+  padding: 50px;
+  padding-left: 10px;
+  color: red;
+}

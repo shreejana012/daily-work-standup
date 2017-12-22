@@ -1,41 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
 
-function FullWidthGrid(props) {
-  return (
-    <div>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-          <Paper>xs=12</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper>xs=12 sm=6</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper>xs=12 sm=6</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-      </Grid>
-    </div>
-  );
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+  },
+});
+
+class ComposedTextField extends React.Component {
+  state = {
+    name: 'Composed TextField',
+  };
+
+  handleChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.container}>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="name-simple">Name</InputLabel>
+          <Input id="name-simple" value={this.state.name} onChange={this.handleChange} />
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="name-helper">Name</InputLabel>
+          <Input id="name-helper" value={this.state.name} onChange={this.handleChange} />
+          <FormHelperText>Some important helper text</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl} disabled>
+          <InputLabel htmlFor="name-disabled">Name</InputLabel>
+          <Input id="name-disabled" value={this.state.name} onChange={this.handleChange} />
+          <FormHelperText>Disabled</FormHelperText>
+        </FormControl>
+        <FormControl className={classes.formControl} error>
+          <InputLabel htmlFor="name-error">Name</InputLabel>
+          <Input id="name-error" value={this.state.name} onChange={this.handleChange} />
+          <FormHelperText>Error</FormHelperText>
+        </FormControl>
+      </div>
+    );
+  }
 }
 
-FullWidthGrid.propTypes = {
+ComposedTextField.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default FullWidthGrid;
+export default withStyles(styles)(ComposedTextField);

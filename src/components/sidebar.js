@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 
 const divStyle = {
-  marginTop: '15px',
+  // marginTop: '5px',
 };
 
 class Sidebar extends Component {
@@ -16,9 +16,9 @@ class Sidebar extends Component {
             <MenuItem>
               <Link to="/standups">Index</Link></MenuItem>
             <MenuItem>
-              <Link to="/standups/show">Show</Link></MenuItem>
-            <MenuItem>
               <Link to="/standups/new">Create</Link></MenuItem>
+            <MenuItem>
+              <Link to="/standups/show">Show</Link></MenuItem>
           </MenuList>
         </Paper>
       </div>

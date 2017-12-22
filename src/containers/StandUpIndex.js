@@ -8,12 +8,21 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import '../styles/index.css';
 
 const h3Style = {
   textAlign: 'center',
   padding: '10px',
   marginBottom: '10px',
   backgroundColor: '#ECEFF1'
+}
+
+const divStyle = {
+  padding: '10px',
+}
+
+const pStyle = {
+  color: '#757575'
 }
 
 class StandUpIndex extends Component {
@@ -28,19 +37,16 @@ class StandUpIndex extends Component {
   renderStandup(){
     return (this.props.standups.map((list) => {
       return (
-        <div>
-          <Paper>
-            <p key= {list.id} >{list.day} <br />
-              <Typography>
-                <p>What did you work on yesterday?</p>
-                {list.work_done} <br />
-                <p>What are you planning to work on today?</p>
-                {list.work_planned}<br />
-                <p>Any impediments in your way?</p>
-                {list.blocker}
-              </Typography>
-            </p>
-          </Paper>
+        <div style={divStyle}>
+          <p key={list.id} style={pStyle}>{list.day}</p>
+            <Paper className='listing'>
+              <h4>What did you work on yesterday?</h4>
+              {list.work_done}
+              <h4>What are you planning to work on today?</h4>
+              {list.work_planned}
+              <h4>Any impediments in your way?</h4>
+              {list.blocker}
+            </Paper>
         </div>
       );
     }))
@@ -64,24 +70,15 @@ class StandUpIndex extends Component {
             <Paper>{typeof(this.props.standups) === 'undefined' ?
             <p>Loading</p> : <div>{this.renderStandup()}</div>}</Paper>
           </Grid>
-
         </Grid>
-
-            {/* {typeof(this.props.standups) === 'undefined' ?
-            <p>Loading</p> : <div>{this.renderStandup()}</div>} */}
-
-
       </div>
     );
-    }
-            }
-function mapStateToProps(state){
-    const {standups} = state.IndexStandup;
-    return { standups };
+  }
 }
 
-// StandUpIndex.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+function mapStateToProps(state){
+  const {standups} = state.IndexStandup;
+  return { standups };
+}
 
 export default connect(mapStateToProps, {fetchStandUp} )(StandUpIndex);
