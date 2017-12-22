@@ -24,9 +24,9 @@ class StandUpNew extends Component {
         };
       }
     handleSubmit = (event)=> {
-        debugger;
         event.preventDefault();        
         this.props.dispatch(UpdateStandup(this.state.standups))
+        
     }
     handleChange = (event) => {
             const  {name, value} = event.target;
