@@ -15,7 +15,7 @@ class StandUpNew extends Component {
         super(props);
         this.state = {
           standups: {
-            // user_id: '',
+            user_id: '',
             day: '',
             work_done: '',
             work_planned: '',
