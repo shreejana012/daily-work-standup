@@ -12,17 +12,17 @@ class StandUpIndex extends Component {
     renderStandup(){   
          return (this.props.standups.map((list) => {
             return (
-                <ul key={list.id}>
-                    <li>
-                        {list.day}<br />
-                        <p>What did you work on yesterday?</p>
-                        {list.work_done} <br />
-                        <p>What are you planning to work on today?</p>
-                        {list.work_planned}<br />
-                        <p>Any impediments in your way?</p>
-                        {list.blocker}
+                    <li key={list.id}>
+                        <Link to={`/standups/${list.id}`}>
+                            {list.day}<br />
+                            <p>What did you work on yesterday?</p>
+                            {list.work_done} <br />
+                            <p>What are you planning to work on today?</p>
+                            {list.work_planned}<br />
+                            <p>Any impediments in your way?</p>
+                            {list.blocker}
+                        </Link>
                     </li>
-                </ul>
                 );
             })
         )    

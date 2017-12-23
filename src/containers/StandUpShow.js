@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 import {showStandup} from '../actions/show_standup';
 
 class StandUpShow extends Component {
-    componentWillMount() {
-        this.props.showStandup(this.props.match.params.id);
+    componentDidMount() {
+        if(!this.props.standup){
+            this.props.showStandup(this.props.match.params.id);
+        } 
     }
 
     render() {
         const {standup} = this.props
-        if(!standup){return(<p>hu</p>);}
+        if(!standup){return(<p>Loading...</p>);}
         return (
             <div>
                 {typeof(standup) === 'undefined' ?
