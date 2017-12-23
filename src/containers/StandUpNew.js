@@ -21,12 +21,21 @@ class StandUpNew extends Component {
             work_planned: '',
             blocker: ''
           }
-        };
+        };  
       }
     handleSubmit = (event)=> {
         event.preventDefault();        
         this.props.dispatch(UpdateStandup(this.state.standups))
-        
+        this.setState({
+            standups: {
+                user_id: '',
+                day: '',
+                work_done: '',
+                work_planned: '',
+                blocker: ''
+              }
+             
+        })
     }
     handleChange = (event) => {
             const  {name, value} = event.target;
