@@ -13,9 +13,9 @@ ReactDOM.render(
     <BrowserRouter>
         <div>
             <Switch>
-              <Route path= "/standups/new" component= {StandUpNew} />
-              <Route path= "/standups/show" component= {StandUpShow} />
-              <Route path= "/standups" component= {StandUpIndex} />
+                <Route path= "/standups/new" component= {StandUpNew} />
+                <Route path= "/standups/:id" component= {StandUpShow} />
+                <Route path= "/standups" component= {StandUpIndex} />
             </Switch>
         </div>
     </BrowserRouter>
