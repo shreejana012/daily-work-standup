@@ -34,14 +34,14 @@
 }
 
 .button Button {
-  background-color: white;
-  color: #00BFA5;
+  background-color: #00BFA5;
+  color: white;
   border: 2px solid #00BFA5;
   padding: 10px 50px;
   margin: 15px;
 }
 
 .button Button:hover {
-  background-color: #00BFA5;
-  color: white;
+  background-color: white;
+  color: #00BFA5;
 }
