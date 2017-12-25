@@ -55,11 +55,11 @@ class StandUpIndex extends Component {
           </Typography>
         </Paper>
 
-        <Grid container spacing={24}>
-          <Grid item xs={6} sm={3}>
+        <Grid container spacing={8}>
+          <Grid item xs={3} sm={3}>
             <Paper><Sidebar /></Paper>
           </Grid>
-          <Grid item xs={18} sm={9}>
+          <Grid item xs={9} sm={9}>
             <Paper>{typeof(this.props.standups) === 'undefined' ?
             <p>Loading</p> : <div>{this.renderStandup()}</div>}</Paper>
           </Grid>

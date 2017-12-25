@@ -25,21 +25,23 @@ class StandUpShow extends Component {
           </Typography>
         </Paper>
 
-        <Grid container spacing={24}>
+        <Grid container spacing={8}>
           <Grid item xs={6} sm={3}>
             <Paper><Sidebar /></Paper>
           </Grid>
           <Grid item xs={18} sm={9}>
-            <Paper>
-              Listing Standup of a user
+            <Paper className='listing'>
               {
                 typeof(standup) === 'undefined' ?
                 <p>Loading</p> :
                 <div>
-                  {standup.day}<br />
-                  {standup.work_done}<br />
-                  {standup.work_planned}<br />
-                  {standup.blocker}<br />
+                  {standup.day}
+                  <h4>What did you work on yesterday?</h4>
+                  {standup.work_done}
+                  <h4>What are you planning to work on today?</h4>
+                  {standup.work_planned}
+                  <h4>Any impediments in your way?</h4>
+                  {standup.blocker}
                 </div>
               }
             </Paper>
