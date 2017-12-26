@@ -18,7 +18,7 @@ class Sidebar extends Component {
               <Link className='link' to="/standups/new"><ListItemText primary="New" /></Link>
             </ListItem><Divider />
             <ListItem button>
-              <Link className='link' to="/standups/1"><ListItemText primary="Show" /></Link></ListItem>
+              <Link className='link' to="/standups/"><ListItemText primary="Show" /></Link></ListItem>
           </List>
         </Paper>
       </div>

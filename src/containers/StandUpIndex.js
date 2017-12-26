@@ -8,14 +8,16 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import {Link} from 'react-router-dom';
 import '../styles/index.css';
 
 const divStyle = {
   padding: '10px',
 }
 
-const pStyle = {
-  color: '#757575'
+const h4Style = {
+  color: '#757575',
+  marginTop: '10px',
 }
 
 class StandUpIndex extends Component {
@@ -31,7 +33,8 @@ class StandUpIndex extends Component {
     return (this.props.standups.map((list) => {
       return (
         <div style={divStyle}>
-          <p key={list.id} style={pStyle}>{list.day}</p>
+          <p key={list.id}><h4 style={h4Style}>{list.day}</h4>
+            <Link className='link' to={`/standups/${list.id}`}>
             <Paper className='listing'>
               <h4>What did you work on yesterday?</h4>
               {list.work_done}
@@ -40,6 +43,8 @@ class StandUpIndex extends Component {
               <h4>Any impediments in your way?</h4>
               {list.blocker}
             </Paper>
+            </Link>
+          </p>
         </div>
       );
     }))
