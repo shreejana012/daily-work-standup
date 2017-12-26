@@ -1,14 +1,24 @@
-
 import React, {Component} from 'react';
 
 class App extends Component {
-    render() {
-        return (
-            <div>
-                Hello
-            </div>
-        );
-           
-    }
+  constructor(props) {
+    super(props);
+  }
+  renderList(){
+    var days = ['Sun', 'mon'],
+    let c_d = new Date(),
+    var value = c_d.getDay(),
+    return {days[value]}
+  }
+
+
+  render(){
+    return(
+      <div>
+        {this.renderList}
+      </div>
+    )
+  }
 }
+
 export default App;

@@ -6,6 +6,5 @@ const allReducers = combineReducers({
    IndexStandup,
    AddStandupReducer,
    ShowStandupReducer
-
 })
 export default allReducers;
