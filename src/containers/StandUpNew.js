@@ -4,11 +4,19 @@ import {connect} from 'react-redux';
 import {UpdateStandup} from '../actions/add_standup';
 import Sidebar from '../components/sidebar';
 
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import green from 'material-ui/colors/green';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: green
+  }
+})
 
 class StandUpNew extends Component {
   constructor(props){
@@ -33,7 +41,8 @@ class StandUpNew extends Component {
         day: '',
         work_done: '',
         work_planned: '',
-        blocker: ''
+        blocker: '',
+        submitted: false
       }
     })
   }
@@ -52,6 +61,7 @@ class StandUpNew extends Component {
   render() {
     const {standups} = this.state
     return (
+      <MuiThemeProvider theme={theme}>
       <div>
         <Paper>
           <Typography>
@@ -65,7 +75,7 @@ class StandUpNew extends Component {
           </Grid>
 
           <Grid item xs={9} sm={9}>
-            <form>
+            <form onSubmit={this.handleSubmit} >
               {/* <Paper>
                 <TextField fullWidth name= "user_id" value = {standups.user_id} onChange= {this.handleChange} type= "text" placeholder= "user_id"/>
               </Paper>
@@ -78,6 +88,7 @@ class StandUpNew extends Component {
                   onChange= {this.handleChange}
                   type= "text"
                   placeholder= "What did you work on yesterday?"/>
+                  {this.submitted && !this.work_done && <div>Work done is required</div>}
               </Paper>
 
               <Paper className='form'>
@@ -87,13 +98,14 @@ class StandUpNew extends Component {
                 <TextField fullWidth name= "blocker" value = {standups.blocker} onChange= {this.handleChange} type= "text" placeholder= "Any impediments in your way?"/>
               </Paper>
               <div className='button'>
-                <Button onSubmit={this.handleSubmit} type="submit">Submit</Button>
+                <Button type="submit">Submit</Button>
                 <Button>Cancel</Button>
               </div>
             </form>
           </Grid>
         </Grid>
       </div>
+      </MuiThemeProvider>
     );
   }
 }
