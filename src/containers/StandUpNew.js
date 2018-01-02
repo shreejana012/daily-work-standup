@@ -1,22 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+// import { render } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {UpdateStandup} from '../actions/add_standup';
+import { MuiThemeProvider } from 'material-ui/styles';
+import {Grid, Button, Typography} from 'material-ui';
+import Card, {CardActions, CardContent, CardMedia} from 'material-ui/Card';
 import Sidebar from '../components/sidebar';
-
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
-import green from 'material-ui/colors/green';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: green
-  }
-})
+import TextField from 'material-ui/TextField';
 
 class StandUpNew extends Component {
   constructor(props){
@@ -41,8 +34,7 @@ class StandUpNew extends Component {
         day: '',
         work_done: '',
         work_planned: '',
-        blocker: '',
-        submitted: false
+        blocker: ''
       }
     })
   }
@@ -60,22 +52,20 @@ class StandUpNew extends Component {
 
   render() {
     const {standups} = this.state
-    return (
-      <MuiThemeProvider theme={theme}>
-      <div>
+    return(
+      <MuiThemeProvider>
         <Paper>
-          <Typography>
-            <h1 className='h3Style'>Create New Standup</h1>
-          </Typography>
+          <h1 className='h3Style'>Create New Stand up</h1>
         </Paper>
 
-        <Grid container spacing={8}>
-          <Grid item xs={3} sm={3}>
+        <Grid container>
+          <Grid item sm={0.5} xs={1}></Grid>
+          <Grid item sm={2} xs={12}>
             <Sidebar />
           </Grid>
 
-          <Grid item xs={9} sm={9}>
-            <form onSubmit={this.handleSubmit} >
+          <Grid item sm={6} xs={12}>
+            <form>
               {/* <Paper>
                 <TextField fullWidth name= "user_id" value = {standups.user_id} onChange= {this.handleChange} type= "text" placeholder= "user_id"/>
               </Paper>
@@ -88,7 +78,6 @@ class StandUpNew extends Component {
                   onChange= {this.handleChange}
                   type= "text"
                   placeholder= "What did you work on yesterday?"/>
-                  {this.submitted && !this.work_done && <div>Work done is required</div>}
               </Paper>
 
               <Paper className='form'>
@@ -98,22 +87,25 @@ class StandUpNew extends Component {
                 <TextField fullWidth name= "blocker" value = {standups.blocker} onChange= {this.handleChange} type= "text" placeholder= "Any impediments in your way?"/>
               </Paper>
               <div className='button'>
-                <Button type="submit">Submit</Button>
+                <Button onSubmit={this.handleSubmit} type="submit">Submit</Button>
                 <Button>Cancel</Button>
               </div>
             </form>
           </Grid>
+          <Grid item sm={2} xs={12}>
+            <Card>
+              <CardContent>
+                <Typography type="headline">Calendar</Typography>
+                <Typography type="subheading">Date</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item sm={0.5} xs={1}></Grid>
         </Grid>
-      </div>
       </MuiThemeProvider>
-    );
+    )
   }
+
 }
 
-function mapStateToProps(state){
-  return{
-    standups: state.standups
-  }
-}
-
-export default connect(mapStateToProps)(StandUpNew);
+export default StandUpNew;

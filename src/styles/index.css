@@ -1,7 +1,12 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
 /* CSS for all headers */
 .h3Style {
   text-align: center;
-  margin: -10px;
+  margin-top: -10px;
   padding: 25px;
   margin-bottom: 10px;
   background-color: #00BFA5;
